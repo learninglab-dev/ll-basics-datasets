@@ -32,46 +32,7 @@ Example Questions:
 - Which song includes the most different names? 
 - Do different names trend in different years? 
 
-## COVID-19 Data
 
-This case surveillance public use dataset has 19 elements for all COVID-19 cases shared with CDC and includes demographics, geography (county and state of residence), any exposure history, disease severity indicators and outcomes, and presence of any underlying medical conditions and risk behaviors. 
-
-
-
-- Source: [CDC](https://data.cdc.gov/Case-Surveillance/COVID-19-Case-Surveillance-Public-Use-Data-with-Ge/n8mc-b4w4)
-- Git file: 
-- Cleaning: This file is updated every two weeks and the original dataset has 27million+ entries. To make this more accessible, the file has been reduced to January - June 2021. 
-
-
-
-Number of entries: 
-
-| Column Name | Data Type | Description | Example | 
-| ----------- | --------- | ----------- | ------- |
-| case_month | categorical, ordinal| date related to the illness of specimen collection, or date received by CDC | 2020-06| 
-| res_state | categorical | State of Residence |OH | 
-| state_fips_code | categorical | State FIPS code |39|
-| res_county | categorical | County of Residence |Belmont | 
-| county_fips_code | categorical | County FIPS code | 39013| 
-| age_group | categorical, ordinal | Age group (0 - 17 years; 18 to 49 years; 50 to 64 years; 65 + years; Unknown; Missing; NA, if value suppressed for privacy protection.) | 0-17 years |
-| sex | categorical | sex F/M/Unknown/Missing/NA | NA |
-| race | categorical | race identification | White |
-| ethnicity | categorical |hispanic or not | Not Hispanic |
-| case_positive_specimen_interval | qauntitative | weeks btwn earliest date and adate of first positive test | 0 |
-| case_onset_interval | quantitative | weeks between earliest date and date of symptom onset | 0|
-| process | categorical | method of identification | Clinical Evaluation | 
-| exposure_yn | categorical | essentially, were they quarantining or were they doing things that could have exposed them to covid? | Yes | 
-| current_status | categorical | current status of this person? | Confirmed case |
-| symptom_status | categorical | Symptomatic status of this person? | Symptomatic
-| hosp_yn | categorical | was the patient hospitalized? | No| 
-| icu_yn | categorical | admitted to ICU? | No| 
-| death_yn |categorical | did they die? | No | 
-| underlying_conditions_yn | categorical | Did they have an underlying condition on this (list)? | No | 
-
-Example Questions: 
-- What is the probability that, if a patient is hospitalized, they are also admitted to the ICU? 
-- Which demographic(s) are most represented in the data? 
-- Are there correlations between demographics, underlying conditions, and death rates? (It has become increasingly evident that our medical system has glaring disparities in how patients of different races and genders receive treatment. Are there any patterns here that reflect that?)
 
 ## Academy Award Winners
 
@@ -99,4 +60,147 @@ Example Questions:
 - What is the ratio of female nominees and winners to male nominees and winners? 
 - Which movie was nominated for the most awards? Which actor/actress? Which won the most? 
 - Have the oscars become more diversified over time? Along which axes? 
+
+
+## Natural Disasters
+
+The file contains natural disaster data (excluding technological and complex disasters) from 2000 - 2020 (date of download: 09/6/2021) for Asia, Africa, Europe, Americas, and Oceania. Only events where there were more than 10 deaths, 100+ people affected, and/or the government declared a state of emergency are recorded in this database.
+
+- Source: [EM-DAT Public](https://public.emdat.be/data)
+- Git File: 
+- Cleaning: 
+    - Removed 'Reconstruction Costs' column due to extreme missingness of information (there was none). 
+    - The GLIDE (GLobal IDEntifer) column was removed because it is useful when cross-identifying events among other databases. 
+    - The 'Disaster Group' column was removed since we only included Natural disasters of the three available (technological, complex, natural).
+    - Removed 'CPI' column because I could not find any information about what it was or meant. 
+
+Number of entries: 239155
+
+
+| Column Name | Data Type | Description | Example |
+| ----------- | --------- | ----------- | ------- |
+| Dis No  | categorical |  Unique Identifier comprising of the year, four unique digits, and the country code, | 2000-0706-PHL|
+| Year |categorical, ordinal| The year of the event  | 2000|
+| Seq | categorical| the sequence identifier | 0706|
+| Disaster Subgroupd | categorical| Bioligcal/Geophysical/Climatological/Hydrological/Meteorlogical/Extraterrestrial | Meteorlogical|
+| Disaster Type | categorical| main disaster type | Storm|
+| Disaster Subtype | categorical| subdivision of disaster type | Tropical cyclone|
+| Event Name | nominal| any specific name the event was referred by | Xangsane (Reming0|
+| Country | categorical| the country affected/impacted. (If more than one country was affected, then each country will have its own entry) | Philippines (the)|
+| ISO | categorical | International Organization for Standardization country code| PHL|
+|Region | categorical | geographical region | South-Eastern Asia|
+|Continent| categorical |continent to which the country belongs| Asia|
+|Location|categorical | as specific a location(s) as possible (e.g. city, village, province, state, etc)| Cavite district (Region IV-A (Calabarzon) province), Sorsogon, Catanduanes, Albay districts (Region V (Bicol region) province), Metropolitan Manila district (National Capital region (NCR) province), Samar districts (Region VIII (Eastern Visayas) province)|
+| Origin| categorical | triggering origin of the disaster | (e.g. for a flood, maybe Heavy Rain)
+|Associated Dis| categorical | secondary or associated effects | (e.g. fires after an earthquake )
+|Associated Dis2| categorical | more after effects||
+|OFDA Response | binary (yes/null) | whether or not OFDA responded | null | 
+|Appeal | binary | was there a request for internationl assistance? | blank
+| Declaration | categorical | was a state of emergency declared? | blank |
+| Aid Contribution | quantitative | total amount given ('000 US$) in immediate relief | blank |
+|Dis Mag Value | quantitative | the intensity of the specifc disaster | 140 |
+| Dis Mag Scale | categorical | the unit of the intensity | Kph |
+| Latitutde | quantitative | North-South coordinates (used for earthquakes, floods, and volcanoes) | blank |
+|Longitude | quantitative | East-West coordinate ("") | blank |
+| Local Time | quantitative | local time when occurred, for sudden disasters | blank | 
+|River Basin | categorical | name of river basins affected | blank |
+| Start Year/Month/Day (Separate columns) | categorical, ordinal | date the disaster occurred (if sudden; if slow, then no day given) | 2000, 10, 28 | 
+| End Year/Month/Day | categorical, ordinal | "" | 2000, 10, 31 | 
+|Total Deaths|quantitative | number of people who died or are missing because of the event| 154|
+| No Injured | quantitative | Number of people requiring medical assistantce | 314| 
+| No Affected | quantitative | number of people requiring assistance (includes No. Injured)| 2435942| 
+| No Homeless | quantitative | number of people whose house was damaged or destoryed (included in No. Affected)| blank | 
+| Total Affected | quantitative | Number of injured, affected, or homeless |2435942|
+| Insured Damages ('000 US$)| quantitative | economic damages that were covered by insurance| 1500 | 
+| Total Damanges ('000 US$) | quantitative | value of damanges and loses| 1700 | 
+| Adm Level | categorical, ordinal | degree of specificity about geocoding (0 = country, 1 = state, 2 = county)| 2| 
+| Admin1 Code | categorical, ordinal | geocodes for state level | blank|
+| Admin2 Code| categorical, ordinal | geocodes for county level | 24210;24228;24240;24243;24245;24261 | 
+| Geo Locations | categorical | names corresponding to geocodes| Albay, Catanduanes, Cavite, Metropolitan Manila, Samar, Sorsogon (Adm2). | 
+
+
+
+More information about the data can be found [here](https://public.emdat.be/about)
+
+Example questions: 
+    - which region(s) of the world experience the most natural disasters in general? 
+    - based on region and time of year, which type of natural disaster is most likely? 
+    - which countries seem to have the best response to natural disasters (low numbers of total affected and damage costs compared to other countries experiencing similar numbers and severity of natural disasters)? 
+
+## COVID-19
+
+Global COVID data for February 2020 through downloaded data (9/7/2021). This dataset focuses more on big-picture numbers across countries than on a country and their specific demographic breakdown of cases. 
+
+- Source: [Our World in Data](https://github.com/owid/covid-19-data/tree/master/public/data)
+- Git file: 
+- Cleaning: Removed some columns in order to simplify the data (e.g. most "variable_smoothed" since that data can be duplicated if desired). 
+
+| Column Name | Data Type | Description | Example |
+| ----------- | --------- | ----------- | ------- |
+| iso_code | categorical | three-letter country code | BWA|
+| continent | categorical | geographical location | Africa |
+| location |categorical | name of country | Botswana| 
+| date | categorical, ordinal | date of information | 07/19/2021
+| total_cases | quantitative | total confirmed cases of covid_19 | 91902 |
+| new_cases | quantitative | new cases reported | 5769 | 
+| total_cases_per_million | quantitative | total cases per million | 38336.587| | 
+| new_cases_per_million | quantitative | new cases per million | 2406.517|
+| total_deaths| quantitative | number of total deaths in the country | 1328 |
+| new_deaths | quantitative | new deaths | 54
+| total_deaths_per_million | quantitative | total deaths per million | 553.97 |
+| new_death_per_million | quantitative | new cases per million |  22.526 |
+| icu_patients | quantitative | number of patients in ICU on a given day | blank | 
+| icu_patients_per_million| quantitative | no. patients in ICU per million | blank | 
+| hosp_patients | quantitative | no. patients hospitalized on a given day | blank | 
+| hosp_patients_per_million | no. patients hospitalized per million | blank |
+| stringency_index | categorical, ordinal | how strict of a response the government had (0-100)| 59.26 | 
+| total_tests | quantitative | total tests given | blank | 
+| new_tests| quantitative | total tests given that day | blank| 
+| total_tests_per_thousand | total tests per thousand | blank | 
+| new_tests_per_thousand | new tests per thousand | blank | 
+| total_vaccinations | quantitative | total vaccination doses given | 318107 |
+| people_vaccinated | quantitative | total people who have received at least one shot | 200054 | 
+| people_fully_vaccinated | quantitative | total people who are fully vaccinated | 118053 | 
+| total_boosters | quantitative | number of booster doses given | 
+| new_vaccinations_smoothed | quantitative | new doses given (7 day rolling average) | 3531 |
+| population | quantitative | population in 2020 | 2397240 | 
+| population_density| quantitative | number of people divided by land area (km^2) |4.044 | 
+| median_age | quantitative | media age of population | 25.8 | 
+| aged_65_older | quantitative | percentage of population 65 & older | 3.941 | 
+| aged_70_older| quantitative | percentage of population 70 & older | 2.242 | 
+|gdp_per_capita | quantitative | GDP from most recent year available | 15807.374 | 
+| extreme_poverty| quantitative | percentage of population living in extreme proverty | blank | 
+| cardiovasc_death_rate | quantitative | death rate from cardiovascular disease in 2017, per 100,000 | 237.372 | 
+| diabetes_prevalence | quantitative | percentage of population aged 20-79 with diabeted  in 2017 | 4.81 | 
+| female_smokers | quantitative | percentage of women who smoke | 5.7 | 
+| male_smokers | quantitative | percentage of men who smoke | 34.4|
+| handwashing_facilities | quantitative | share of population with basic handwashing facilities | blank | 
+| hospital_beds_per_thousand | quantitative | hospital beds per 1000 people | 1.8 | 
+| life_expectancy | quantitative | life expectancy at birth in 2019 |  69.59 | 
+| human_development_index | quantitative | composite value representing a long, healthy life, knowledge, and decent standard of living |  0.735 | 
+| excess_mortality | quantitative | excess mortality p-scores for all ages | blank | 
+
+Example questions:  
+- Does population density seem to play a role in number of cases/vaccination rates? 
+- Are there regional differences in how countries have handled the pandemic? 
+- Is there a correlation between the general health of the population and number of total cases/deaths? 
+
+
+
+
+
+
+## Global Temperatures 
+
+- Source: [Kaggle](https://www.kaggle.com/sevgisarac/temperature-change)
+- Git file: 
+- Cleaning
+
+## Harry Potter Text
+
+## BOK Slack Data 
+
+## BOK Vimeo Data
+
+
 
