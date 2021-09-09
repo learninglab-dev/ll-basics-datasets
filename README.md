@@ -67,7 +67,7 @@ Example Questions:
 The file contains natural disaster data (excluding technological and complex disasters) from 2000 - 2020 (date of download: 09/6/2021) for Asia, Africa, Europe, Americas, and Oceania. Only events where there were more than 10 deaths, 100+ people affected, and/or the government declared a state of emergency are recorded in this database.
 
 - Source: [EM-DAT Public](https://public.emdat.be/data)
-- Git File: 
+- Git File: [Link](https://github.com/learninglab-dev/ll-basics-datasets/blob/main/natural_disaster_data.xlsx)
 - Cleaning: 
     - Removed 'Reconstruction Costs' column due to extreme missingness of information (there was none). 
     - The GLIDE (GLobal IDEntifer) column was removed because it is useful when cross-identifying events among other databases. 
@@ -105,7 +105,7 @@ Number of entries: 239155
 | Local Time | quantitative | local time when occurred, for sudden disasters | blank | 
 |River Basin | categorical | name of river basins affected | blank |
 | Start Year/Month/Day (Separate columns) | categorical, ordinal | date the disaster occurred (if sudden; if slow, then no day given) | 2000, 10, 28 | 
-| End Year/Month/Day | categorical, ordinal | "" | 2000, 10, 31 | 
+| End Year/Month/Day (Separate columns) | categorical, ordinal | "" finished | 2000, 10, 31 | 
 |Total Deaths|quantitative | number of people who died or are missing because of the event| 154|
 | No Injured | quantitative | Number of people requiring medical assistantce | 314| 
 | No Affected | quantitative | number of people requiring assistance (includes No. Injured)| 2435942| 
@@ -123,17 +123,17 @@ Number of entries: 239155
 More information about the data can be found [here](https://public.emdat.be/about)
 
 Example questions: 
-    - which region(s) of the world experience the most natural disasters in general? 
-    - based on region and time of year, which type of natural disaster is most likely? 
-    - which countries seem to have the best response to natural disasters (low numbers of total affected and damage costs compared to other countries experiencing similar numbers and severity of natural disasters)? 
+- which region(s) of the world experience the most natural disasters in general? 
+- based on region and time of year, which type of natural disaster is most likely? 
+- which countries seem to have the best response to natural disasters (low numbers of total affected and damage costs compared to other countries experiencing similar numbers and severity of natural disasters)? 
 
 ## COVID-19
 
 Global COVID data for February 2020 through downloaded data (9/7/2021). This dataset focuses more on big-picture numbers across countries than on a country and their specific demographic breakdown of cases. 
 
 - Source: [Our World in Data](https://github.com/owid/covid-19-data/tree/master/public/data)
-- Git file: 
-- Cleaning: Removed some columns in order to simplify the data (e.g. most "variable_smoothed" since that data can be duplicated if desired). 
+- Git file: [Link](https://github.com/learninglab-dev/ll-basics-datasets/blob/main/owid-covid-data_cleaned.csv)
+- Cleaning: Removed some columns in order to simplify the data (e.g. most "[variable]_smoothed" columns since that data can be duplicated if desired). 
 
 | Column Name | Data Type | Description | Example |
 | ----------- | --------- | ----------- | ------- |
@@ -190,13 +190,69 @@ Example questions:
 
 
 
-## Global Temperatures 
+## Global Historical Emissions 
 
-- Source: [Kaggle](https://www.kaggle.com/sevgisarac/temperature-change)
-- Git file: 
-- Cleaning
+This dataset contains information about human-caused greenhouse gas (GHG) emissions from 1990 to 2018. More than 100 countries are included. Because of the way the data is formatted, this dataset also provides an opportunity to try reformatting the data into [tidy data](https://towardsdatascience.com/whats-tidy-data-how-to-organize-messy-datasets-in-python-with-melt-and-pivotable-functions-5d52daa996c9).  (Or you can find a tidy version of the data [here](https://github.com/learninglab-dev/ll-basics-datasets/blob/main/ghg-emissions_tidy.csv).) 
 
-## Harry Potter Text
+- Source: [The World Bank](https://data.worldbank.org/indicator/EN.ATM.GHGT.KT.CE?end=2018&start=2018&view=map)
+- Git file: [Link](https://github.com/learninglab-dev/ll-basics-datasets/blob/main/ghg-emissions.csv)
+- Cleaning: None
+
+
+| Column Name | Data Type | Description | Example |
+| ----------- | --------- | ----------- | ------- |
+| Country/Region | categorical | name of country | China | 
+| Unit | categorical | metric tons of carbon dioxide equivalent | MtCO2e | 
+| Yearly Measurement | categorical | the column name is the year, the row value is the measurement | (1990) 2873.71 |
+
+Example Questions: 
+- Which country has increased their emissions the most over the last two decades? 
+- Which countries have decreased their emissions? - 
+- What are the global emissions trends? 
+
+
+
+## Harry Potter Texts & Scripts
+
+### Book Texts
+
+- Source: [u/khushmeeet](https://github.com/khushmeeet/potter-nlp)
+- Git files: [Link](https://github.com/learninglab-dev/ll-basics-datasets/tree/main/harry_potter_data/book_texts)
+- Cleaning: none
+
+This folder contains .txt files of all seven books. The files have been pre-cleaned fo most punctuation and uppercase letters, with only quotation marks, periods, exclamation marks, and question marks remaining. This could be a fun dataset to work with to get experience with text mining, sentiment analysis, or if you simply want to visualize some of the language of one of the world's most popular YA franchises. 
+
+Example Questions: 
+- Which characters/spells/locations are mentioned most throughout the books? 
+- Does the vocabulary used increase across the books? 
+- Do the books get progressively, uniformly darker? 
+
+### Movie Scripts
+
+Unlike with the raw text file of the books above, these data include who said what, as they are transcribed of the movie scripts. What is lost in all of Harry's internal narration and description of the world, is gained by being able to do character analysis. 
+
+
+- Source: [Kaggle](https://www.kaggle.com/kornflex/harry-potter-movies-dataset)
+- Git files: [Link](https://github.com/learninglab-dev/ll-basics-datasets/tree/main/harry_potter_data/movie_scripts)
+- Cleaning: none
+
+| Column Name | Data Type | Description | Example |
+| ----------- | --------- | ----------- | ------- |
+| movie   | categorical | the movie name | Harry Potter and the Philospher's Stone |
+| chapter | categorical | the chapter of the movie, according to the script | Doorstep Delivery |
+| character | categorical | which character is speaking | Albus Dumbledore |
+| dialog | text | the dialog of the character speaking | I should have known that you would be here...Professor McGonagall.| 
+
+Example Questions: 
+- Who has the most lines/words in all the movies? 
+- Does the amount of dialog increase with the movies?  
+- Do the movies get progressively, uniformly darker? 
+
+
+And if you want to take a whack at using both and doing some comparing/contrasting, that could be fun. Because quotation marks were retained in the book text files, it might be possible to use [regex](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/Regular_Expressions) to search out all the phrases [encased by quotes](https://stackoverflow.com/questions/171480/regex-grabbing-values-between-quotation-marks), so you'll have all the dialog in the books - but without the information of who said what. You could still compare amount of dialog, and compare vocabulary. 
+
+
+
 
 ## BOK Slack Data 
 
