@@ -6,7 +6,7 @@ These are example datasets that are open source, cleaned, and free to use for wh
 
 ## Names in Lyrics
 
-This dataset analyzes songs from the US Billboard Hot 100 from 1958-2017, identifying names from their lyrics. A more complete description of how the data was collected, as well as the visual essay, can be found in the source link.
+This dataset analyzes songs from the US Billboard Hot 100 from 1958-2017, identifying names from their lyrics. A more complete description of how the data was collected, as well as the visual essay, can be found in the source link. This dataset can be a good entry into dealing with text data, before diving into some larger datasets (like the Harry Potter text below.)
 
 
 
@@ -36,13 +36,13 @@ Example Questions:
 
 ## Academy Award Winners
 
-Description 
+Attention has been brough to the fact that most academy award winners are, in fact, caucasian. And mostly male. Here is a dataset of academy award winners and nominees since the inception of the Oscars, 1927 through 2020. 
 
 - Source: [Kaggle](https://www.kaggle.com/dharmikdonga/academy-awards-dataset-oscars)
 - Git file: [Link](https://github.com/learninglab-dev/ll-basics-datasets/blob/main/oscars.xlsx)
 - Cleaning: None
 
-
+Number of entries: 10,397
 
 | Column Name | Data Type | Description | Example | 
 | ----------- | --------- | ----------- | ------- |
@@ -58,7 +58,7 @@ Description
 
 Example Questions: 
 - What is the ratio of female nominees and winners to male nominees and winners? 
-- Which movie was nominated for the most awards? Which actor/actress? Which won the most? 
+- Which category is the most diverse?
 - Have the oscars become more diversified over time? Along which axes? 
 
 
@@ -192,7 +192,7 @@ Example questions:
 
 ## Global Historical Emissions 
 
-This dataset contains information about human-caused greenhouse gas (GHG) emissions from 1990 to 2018. More than 100 countries are included. Because of the way the data is formatted, this dataset also provides an opportunity to try reformatting the data into [tidy data](https://towardsdatascience.com/whats-tidy-data-how-to-organize-messy-datasets-in-python-with-melt-and-pivotable-functions-5d52daa996c9).  (Or you can find a tidy version of the data [here](https://github.com/learninglab-dev/ll-basics-datasets/blob/main/ghg-emissions_tidy.csv).) 
+This dataset contains information about human-caused greenhouse gas (GHG) emissions from 1990 to 2018. More than 100 countries are included. Because of the way the data is formatted, it also provides an opportunity to practice reformatting the data into [tidy data](https://towardsdatascience.com/whats-tidy-data-how-to-organize-messy-datasets-in-python-with-melt-and-pivotable-functions-5d52daa996c9).  (Or you can find a tidy version of the data [here](https://github.com/learninglab-dev/ll-basics-datasets/blob/main/ghg-emissions_tidy.csv).) 
 
 - Source: [The World Bank](https://data.worldbank.org/indicator/EN.ATM.GHGT.KT.CE?end=2018&start=2018&view=map)
 - Git file: [Link](https://github.com/learninglab-dev/ll-basics-datasets/blob/main/ghg-emissions.csv)
@@ -207,7 +207,7 @@ This dataset contains information about human-caused greenhouse gas (GHG) emissi
 
 Example Questions: 
 - Which country has increased their emissions the most over the last two decades? 
-- Which countries have decreased their emissions? - 
+- Which countries have decreased their emissions?  
 - What are the global emissions trends? 
 
 
@@ -249,14 +249,78 @@ Example Questions:
 - Do the movies get progressively, uniformly darker? 
 
 
-And if you want to take a whack at using both and doing some comparing/contrasting, that could be fun. Because quotation marks were retained in the book text files, it might be possible to use [regex](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/Regular_Expressions) to search out all the phrases [encased by quotes](https://stackoverflow.com/questions/171480/regex-grabbing-values-between-quotation-marks), so you'll have all the dialog in the books - but without the information of who said what. You could still compare amount of dialog, and compare vocabulary. 
+And if you want to take a whack at using both datasets and doing some comparing/contrasting, that could be fun. Because quotation marks were retained in the book text files, it might be possible to use [regex](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/Regular_Expressions) to search out all the phrases [encased by quotes](https://stackoverflow.com/questions/171480/regex-grabbing-values-between-quotation-marks), so you'll have all the dialog in the books - but without the information of who said what. You could still compare amount of total dialog and vocabulary. 
+
+## Global Population Growth, Fertility, and Mortality
+
+This is a dataset from UNdata that contains the following measurements: 
+- Life expectancy at birth for males/females/both 
+- Population annual rate of increase (percent)
+- Infant mortality for both sexes (per 1,000 live births)
+- Maternal mortality ratio (deaths per 100,000 population)
+- Total Fertility Rate (children per women) 
+
+The data was collected for three five-year periods and aggregated into three "years": 2005, 2010, and 2015. 
+
+- Source: [UN Data](https://data.un.org/)
+- Git File: [Link](https://github.com/learninglab-dev/ll-basics-datasets/blob/main/UN_population_indicators.csv)
+- Cleaning: Headers
+
+| Column Name | Data Type | Description | Example |
+| ----------- | --------- | ----------- | ------- |
+| ISO Code | categorical | three-digit ISO code for each country, region, or area | 4 | 
+| Country Name | categorical | name of the country, region, or area | Afghanistan | 
+| Year | categorical | the reference year | 2005 | 
+| Series | categorical | the specific data series |Total fertility rate (children per women)|
+| Value | quantitative | the numerical measurement for the data series in question | 7.1816 | 
+
+## Bok Data 
+
+Bok Teaching and Learning Center is a hopping place, and this is reflected in the modes we have used to communicate with each other and with others. Here are three datasets that can maybe shed some insight. 
+
+### Slack Overview & Channel Data
+
+I don't have too much experience with collecting data using APIs. Thought it might be a good exercise to try to use the slack API to pull other data not included in the standard analystics csv, like reaction emojis. 
 
 
 
+- Source: Slack
+- Git file: 
+- Cleaning: None
 
-## BOK Slack Data 
+| Column Name | Data Type | Description | Example |
+| ----------- | --------- | ----------- | ------- |
+| Date | categorical | the date | 6/1/2016 | 
+| Total Enabled Membership | quantitative | members + guests | 55 | 
+| Enabled Full Members | quantitative | number of memers | 55 | 
+| Enabled Guests | quantitative | guests have limited access | 0 | 
+| Daily Active Members | quantitative | 
+| Daily Members Posting Messages | 
+| Weekly Active Members | 
+| Weekly Members posting Messages | 
+| Messages in public channels | 
+| Messages in private channels | 
+| Messages posted | 
+| Public channels, single-workspace | 
+| Files uploaded | 
+| Percent of messages, private channels | 
+| Percent of messages, public channels | 
+| Percent of messages, DMs | 
+| Percent of views, public channels | 
+| Percent of views, private channels | 
+| Percent of views, DMs| 
 
-## BOK Vimeo Data
+
+
+<!-- ### Vimeo Data
+
+- Source: 
+- Git file: 
+- Cleaning: None
+
+| Column Name | Data Type | Description | Example |
+| ----------- | --------- | ----------- | ------- | -->
+
 
 
 
