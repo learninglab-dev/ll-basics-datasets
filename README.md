@@ -274,7 +274,63 @@ The data was collected for three five-year periods and aggregated into three "ye
 | Series | categorical | the specific data series |Total fertility rate (children per women)|
 | Value | quantitative | the numerical measurement for the data series in question | 7.1816 | 
 
-## Bok Data 
+## Volcano Data
+
+- Source: Harvested from the NOAA NCEI database for natural hazards. The data was filtered for years between 1950 and Present (October 28th, 2021), and with a VEI score > 1 (to remove eruptions with null scores). 
+- Git File: 
+- Cleaning: Converted Tsu and Eq columns from null/numerical identifier or tsunami or earthquake event into binary indicators. 
+
+| Column Name | Data Type | Description | Example |
+| ----------- | --------- | ----------- | ------- |
+| Year | categorical | the year of the eruption | 1950 | 
+| Mo | categorical | the month of the eruption (values 1-12) | 8 |
+| Dy | categorical | the date of the eruption, if known (1-31) | 28 | 
+| Tsu | categorical | whether there was a resultant tsunami event (binary) | 0 | 
+| Eq | categorical | whether there was a corresponding earthquake (binary) | 0 | 
+| Name | categorical | the name of the volcano as listed by the Smithsonian Institution | Semeru | 
+| Location | categorical | the specific region of the volcano | Java | 
+| Country | categorical | the country where the volcano is located | Indonesia | 
+| Latitude | quantitative | the latitude of the volcano | -8.108 |
+| Longitude | quantitative | the longitude of the volcano | 112.922 | 
+| Elevation | quantitative | the elevation of the volcano in meters (m) above sealevel | 3657 | 
+| Type | categorical | the type of volcano, as listed by the Smithsonian Institution | Stratovolcano | 
+| VEI | categorical | Volcanic Explosivity Index | 1 | 
+| Agent | categorical | the component of the eruption that caused fatalities | P |
+
+
+|VEI|	General| Description|	Cloud Column Height (km)|	Volume (m3)|	Qualitative Description|	Classification|	How often|	Example|
+
+| ----------- | --------- | ----------- | ------- | ----------- | ------- | ----------- | ------- |----------- | 
+|0|	non-explosive|	<0.1|	1x104|	Gentle|	Hawaiian|	daily|	Kilauea|
+|1	|Small|	0.1-1|	1x106	|Effusive|	Haw/Strombolian|	daily|	Stromboli|
+|2|	Moderate|	1-5	1x107	|Explosive|	Strom/Vulcanian	weekly|	Galeras, 1992|
+|3|	Moderate-Large	|3-15|	1x108|	Explosive|	Vulcanian|	yearly|	Ruiz, 1985|
+|4	|Large|	10-25	1x109|	Explosive|	Vulc/Plinian|	10's of years|	Galunggung, 1982|
+|5	|Very Large|	>25	1x1010	|Cataclysmic|	Plinian|	100's of year|s	St. Helens, 1981|
+|6	|	|>25 km|	1x1011|	paroxysmal	|Plin/Ultra-Plinian|	100's of years|	Krakatau, 1883|
+|7	|	|>25 km|	1x1012|	colossal|	Ultra-Plinian|	1000's of years|	Tambora, 1815|
+|8	|	|>25 km	|>1x1012	|colossal|	Ultra-Plinian|	10,000's of years|	Yellowstone, 2 Ma|
+
+
+
+|Code	|Agent|
+| ----------- | ------- |
+|A|	Avalanche (Debris and landslides)|
+|E|	Electrical (lightning)|
+|F|	Floods (& Jökulhlaups)|
+|G|	Gas (emission from eruptive craters as well as fumarolic/solfataric activity)|
+|I|	Indirect deaths (disease, starvation, exposure, desolation)|
+|L|	Lava flows|
+|M|	Mudflows/Lahars|
+|m|	Secondary (post-eruption) mudflows|
+|P|	Pyroclastic flows, surges, & direct blasts|
+|S|	Seismic, or volcanic earthquake (tectonic earthquake deaths excluded)|
+|T	|Tephra (ash, bombs, lapilli, steam blasts). Killing either by ballistic impact, or with finer-grained ash, by suffocation, collapse of ash-covered roofs, etc.|
+|W|	Waves or tsunami|
+
+
+
+<!-- ## Bok Data 
 
 Bok Teaching and Learning Center is a hopping place, and this is reflected in the modes we have used to communicate with each other and with others. Here are three datasets that can maybe shed some insight. 
 
@@ -309,7 +365,7 @@ I don't have too much experience with collecting data using APIs. Thought it mig
 | Percent of views, public channels | 
 | Percent of views, private channels | 
 | Percent of views, DMs| 
-
+ -->
 
 
 <!-- ### Vimeo Data
